@@ -3,6 +3,7 @@
 - ***New-ADUser*** -Name <sub>username</sub> -AccountPassword(ConvertTo-SecureString <sub>password</sub> -AsPlainText -Force) -Enabled $true
 - ***Remove-ADUser*** <sub>username</sub>
 - ***Set-ADUser***
+- ***Set-ADAccountPassword*** <sub>username</sub> -Reset
 
 ### AD Group:
 
