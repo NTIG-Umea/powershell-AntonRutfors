@@ -9,10 +9,10 @@ foreach($user in $users){
             if(get-aduser -filter "Name -eq '$newUsername'"){
                 continue;
             } else{
-                new-aduser -name $newUsername -path "OU=LightSalmon,DC=colors,DC=labb";
+                new-aduser -name $newUsername -path "OU=test,DC=colors,DC=labb";
             }
         }
     } else{
-        new-aduser -name $username -path "OU=LightSalmon,DC=colors,DC=labb";
+        new-aduser -name $username -path "OU=test,DC=colors,DC=labb";
     }
 }
