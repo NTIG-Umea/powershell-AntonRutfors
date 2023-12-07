@@ -4,7 +4,7 @@ foreach($user in $users){
     $username = $user.firstname + "." + $user.lastname;
 
     if(get-aduser -filter "Name -eq '$username'"){
-        for($i = 2; i > 99; $i += 1){
+        for($i = 2; $i > 99; $i += 1){
             $newUsername = $username + $i.ToString();
             if(get-aduser -filter "Name -eq '$newUsername'"){
                 continue;
