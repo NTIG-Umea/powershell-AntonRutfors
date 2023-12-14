@@ -1,4 +1,6 @@
-﻿$users = Import-Csv .\users2.csv;
+﻿$ErrorActionPreference = 'silentlycontinue'
+
+$users = Import-Csv .\users2.csv;
 
 foreach($user in $users){
     $username = $user.firstname + "." + $user.lastname;

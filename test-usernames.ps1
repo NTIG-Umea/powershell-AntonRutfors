@@ -1,7 +1,7 @@
 ﻿$username = "Julia.ANDERSSON";
 $newuser = $username;
 
-while(get-aduser -identity $newuser) {
+while(get-aduser -identity $newuser ) {
     $counter++;
     $newuser = $username + $counter;
 }
