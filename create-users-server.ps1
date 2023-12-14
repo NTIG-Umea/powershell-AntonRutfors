@@ -2,6 +2,13 @@
 
 foreach($user in $users){
     $username = $user.firstname + "." + $user.lastname;
+    $newuser = $username;
+    $counter = 2;
 
-    new-aduser -name $username -path "OU=LightSalmon,DC=colors,DC=labb";
+    while(get-aduser -identity $newuser) {
+        $newuser = $username + $counter;
+        $counter++;
+    }
+
+    new-aduser -name $newuser -path "OU=LightSalmon,DC=colors,DC=labb";
 }
