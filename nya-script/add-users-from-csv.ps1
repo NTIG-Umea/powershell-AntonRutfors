@@ -1,4 +1,4 @@
-$usernames = Import-Csv "names.csv"
+$usernames = Import-Csv ./names.csv
 
 function Check-IfUserExists {
     param (
@@ -22,18 +22,7 @@ foreach($username in $usernames) {
         $newuser = $completeUsername + $counter
         $counter++
     }
-    #while($true) {
-    #    try {
-    #        get-aduser -identity $newuser;
-    #    }
-    #    catch {
-    #        new-aduser -name $newuser -path "OU=Antons Anvandare,DC=walters,DC=labb";
-    #        break;
-    #    }
-    #    $newuser = $completeUsername + $counter;
-    #    $counter += 1;
-    #}
+
+    Write-Host "creating user: $newuser"
+    new-aduser -name $newuser -path "OU=Antons anvandare,DC=walters,DC=labb"
 }
-
-
-#new-aduser -name $username -path "OU=Antons Anvandare,DC=walters,DC=labb";
