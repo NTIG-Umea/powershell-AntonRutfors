@@ -1,7 +1,8 @@
 # syntax:
-# assignfolder.ps1 <path to file to create> <name of group>
+# assignfolder.ps1 <name of file> <name of group>
 
-$pathToFolder = $args[0]
+$fileName = $args[0]
+$pathToFolder = "\\adc-a\Anton mapp\$fileName"
 $groupName = $args[1]
 
 New-Item -Path $pathToFolder -ItemType "directory"
