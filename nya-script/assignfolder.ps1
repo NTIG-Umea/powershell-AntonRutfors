@@ -1,4 +1,18 @@
-$groupName = $args[0]
-$username = $args[1]
+# syntax:
+# assignfolder.ps1 <path to file to create> <name of group>
 
-Add-ADGroupMember -Identity $groupName -Members $username
+$pathToFolder = $args[0]
+$groupName = $args[1]
+
+New-Item -Path $pathToFolder -ItemType "directory"
+
+$aclRule = Get-Acl -Path $pathToFolder
+
+$fileSystemRights = "Modify"
+$type = "Allow"
+$fileSystemAccessRuleArgumentList = $groupName, $fileSystemRights, $type
+
+$folderRights = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $fileSystemAccessRuleArgumentList
+
+$aclRule.SetAccessRule($folderRights)
+Set-Acl -Path $pathToFolder -AclObject $aclRule
